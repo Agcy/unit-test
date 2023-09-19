@@ -28,6 +28,7 @@ class Catalogue {
     return matches;
   }
 
+// exercise1
   removeProductById(id){
     const matches = this.products.find(product => id === product.id)
     if (matches !== -1) {
@@ -35,6 +36,17 @@ class Catalogue {
       return true;
     }
     return false;
+  }
+
+
+// exercise2
+  checkReorder() {
+    const productsToReorder = this.products.filter(product => product.quantityInStock <= product.reorderLevel).map(product => product.id);
+
+    return {
+      type: "Reorder",
+      productIds: productsToReorder
+    };
   }
 
 }
