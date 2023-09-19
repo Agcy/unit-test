@@ -96,3 +96,39 @@ if (response === false)
   console.log('\tPassed');
 else
   console.log('\tFailed');
+
+
+//=============================
+
+console.log('Test checkReorder');
+
+cat.addProduct(new Product("A123", "Product 1", 0, 5, 10.0));
+cat.addProduct(new Product("A124", "Widget 1", 10, 10, 10.0));
+cat.addProduct(new Product("A125", "A Product 2", 20, 15, 10.0));
+cat.addProduct(new Product("A126", "A Widget 2", 30, 20, 10.0));
+cat.addProduct(new Product("A127", "Bracket 1", 40, 25, 10.0)); 
+cat.addProduct(new Product("A128", "Another Product 3", 50, 20, 10.0));
+
+//1.need to recorder
+cat = new Catalogue("Test Catalogue");
+
+console.log("\tWhen there are products needing reorder, it should return the productIds");
+const reorder = cat.checkReorder();
+// Expectation
+if (reorder.type === "Reorder" && reorder.productIds.length === 3) {
+  console.log('\tPassed');
+} else {
+  console.log('\tFailed');
+}
+
+//2. doesn't need recorder
+cat = new Catalogue("Test Catalogue");
+
+console.log("\tWhen there are no products needing reorder, it should return an empty productIds array");
+reorder = cat.checkReorder();
+// Expectation
+if (reorder.type === "Reorder" && reorder.productIds.length === 0) {
+  console.log('\tPassed');
+} else {
+  console.log('\tFailed');
+}
