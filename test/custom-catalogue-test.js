@@ -91,7 +91,7 @@ else
 
 console.log("\tWhen removing a product with a non-existing ID, it should return false");
 response = cat.removeProductById("A129");
-// Expectation
+// Expectation 
 if (response === false)
   console.log('\tPassed');
 else
